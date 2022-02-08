@@ -101,21 +101,26 @@
             let isChecked = false;
 
             const items = document.querySelectorAll('input[type=checkbox]');
+            // const items = [
+            //   ...document.querySelectorAll('input[type=checkbox]'),
+            // ];
 
-            items.forEach(item => {
-              if(item.checked) isChecked = true;
-            });
+            // let checkboxArray = [];
+            // items.forEach((item, index) => {
+            //   checkboxArray[index] = item.checked;
+            // });
 
-            
+            // console.log(checkboxArray);
+
             for (i = items.length - 1; i >= 0; i--) {
-              items[i].checked && (isChecked = true);
-              
-              if (!items[i].checked && isChecked) {
-                items[i].checked = isChecked;
+              if (items[i].checked && isChecked) {
+                break;
               }
 
-              if(items[i].checked && isChecked) {
-                isChecked = false;
+              if (items[i].checked) {
+                isChecked = true;
+              } else if (!items[i].checked && isChecked) {
+                items[i].checked = isChecked;
               }
             }
           }
